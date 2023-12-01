@@ -120,3 +120,4 @@ app.post('/imagen', upload.single('archivo'), async (req, res) => {
 });
 
 
+module.exports = app
