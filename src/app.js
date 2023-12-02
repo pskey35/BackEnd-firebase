@@ -5,7 +5,7 @@ const cors = require('cors')
 const firebase = require("firebase/compat/app")
 require("firebase/compat/storage")
 const corsOptions = {
-    origin: ['https://galy.vercel.app',"http://localhost:3000"], // Cambia '*' al dominio específico de tu cliente en producción
+    origin: ['https://galy.vercel.app',"http://localhost:3000","http://127.0.0.1:3000"], // Cambia '*' al dominio específico de tu cliente en producción
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
     optionSuccessStatus:200,
@@ -44,7 +44,7 @@ try{
 }catch(e){
   console.log("hubo un error")
   console.log(e)
- return res.status(500)
+ return res.status(500).json({error:e})
 }
 })
 
