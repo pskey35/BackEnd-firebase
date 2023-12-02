@@ -48,5 +48,7 @@ try{
 }
 })
 
-
+app.get("/",(req,res)=>{
+    res.json({exito:"funciona correctamente"})
+})
 module.exports = app
