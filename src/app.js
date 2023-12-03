@@ -34,7 +34,11 @@ try{
   console.log(req.file)
   const {originalName,buffer} = req.file
   const storageRef = firebase.storage().ref("carpetaK/carpeta2/file")
-  await  storageRef.put(buffer)
+  //aqui especifique el metadata porque cuando lo subia asi noma me aparecia el archivo 
+  //tipo de "application/octet-stream"  aunque si pones en una etiqueta img.src = "urlRecibidoFirebase"
+  //si te sale el archivo pero en el firebase es mejor ponerle que tipo de archivo es para poder verlo enla 
+  //console de firebase xd
+  await  storageRef.put(buffer,{metadata: req.file.mimetype})
   const url = await storageRef.getDownloadURL()
   console.log(req.file)
   console.log("---------")
@@ -47,6 +51,7 @@ try{
  return res.status(500).json({error:e})
 }
 })
+
 
 app.get("/",(req,res)=>{
     res.json({exito:"funciona correctamente"})
