@@ -38,7 +38,7 @@ try{
   //tipo de "application/octet-stream"  aunque si pones en una etiqueta img.src = "urlRecibidoFirebase"
   //si te sale el archivo pero en el firebase es mejor ponerle que tipo de archivo es para poder verlo enla 
   //console de firebase xd
-  await  storageRef.put(buffer,{metadata: req.file.mimetype})
+  await  storageRef.put(buffer,{contentType: req.file.mimetype})
   const url = await storageRef.getDownloadURL()
   console.log(req.file)
   console.log("---------")
